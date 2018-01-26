@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+  <div class="container-fluid">
+  <h1>-My Food Map-</h1>
+  <div id="map"></div>
+  </div>
+  <script asyns defer type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMZ-WUTCXZJzoNUGjULsF9QdjVOgvL9ps&callback=initMap" asyncdefer></script>
+  <script>
+    function initMap(){
+      // Map options
+      var options = {
+        zoom:15,
+        center:{lat:25.033748,lng:121.543420},
+        
+      }
+
+      // New map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+      // Listen for click on map
+      google.maps.event.addListener(map, 'click', function(event){
+        // Add marker
+        addMarker({coords:event.latLng});
+      });
+
+      /*
+      // Add marker
+      var marker = new google.maps.Marker({
+        position:{lat:42.4668,lng:-70.9495},
+        map:map,
+        icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+      });
+
+      var infoWindow = new google.maps.InfoWindow({
+        content:'<h1>Lynn MA</h1>'
+      });
+
+      marker.addListener('click', function(){
+        infoWindow.open(map, marker);
+      });
+      */
+
+      // Array of markers
+      var markers = [
+        {
+          coords:{lat:25.03386,lng:121.543435},
+          content:'<h1>資策會</h1>',
+          iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+        },
+        {
+          coords:{lat:25.026973,lng:121.539658},
+          content:'<h1>ANTICO FORNO 老烤箱義式手桿披薩 <h3>(歐陸)</h3></h1>'
+        },
+        {
+          coords:{lat:25.040317,lng: 121.551373},
+          content:'<h1>	Botega del vin <h3>(歐陸)</h3></h1>'
+        },
+        {
+          coords:{lat:25.034453,lng:121.556840},
+          content:'<h1>	Hidden by DN 隱丹廚 <h3>(歐陸)</h3></h1>'
+          },
+          {
+          coords:{lat:25.042387,lng:121.545319},
+          content:'<h1>	JAPOLI義大利餐酒館 <h3>(歐陸)</h3></h1>'
+        },
+        {
+          coords:{lat:25.033522,lng:121.528409},
+          content:'<h1>La Cocotte 法式餐廳 <h3>(歐陸)</h3></h1>'
+        },
+        {
+          coords:{lat:25.042389,lng:121.555629},
+          content:'<h1>La MESA 西班牙餐廳 <h3>(歐陸)</h3></h1>'
+        },
+        {
+          coords:{lat:25.040032,lng:25.040032},
+          content:'<h1>德相N.C.I.S美式加州壽司 <h3>(日韓)</h3></h1>'
+        },
+        {
+          coords:{lat:25.033806,lng:121.551695},
+          content:'<h1>旬採鮨処(信義店) <h3>(日韓)</h3></h1>'
+        },
+        {
+          coords:{lat:25.042523,lng:121.547945},
+          content:'<h1>叁和院 台灣風格飲食 <h3>(中華)</h3></h1>'
+        },
+        {
+          coords:{lat:25.034504,lng:121.550363},
+          content:'<h1>PICO PICO Restaurant & Bar <h3>(美墨)</h3></h1>'
+        },
+        {
+          coords:{lat:25.041455,lng:121.546304},
+          content:'<h1>饗泰多泰式風格餐廳 <h3>(南洋)</h3></h1>'
+        },
+
+      ];
+
+      // Loop through markers
+      for(var i = 0;i < markers.length;i++){
+        // Add marker
+        addMarker(markers[i]);
+      }
+
+      // Add Marker Function
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map,
+          animation: google.maps.Animation.BOUNCE,
+          //icon:props.iconImage
+        });
+
+        // Check for customicon
+        if(props.iconImage){
+          // Set icon image
+          marker.setIcon(props.iconImage);
+        }
+
+        // Check content
+        if(props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+    }
+  </script>
+  
+{% endblock %}

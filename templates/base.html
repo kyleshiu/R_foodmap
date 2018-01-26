@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>base</title>
+    <link rel="stylesheet" href="../static/styles/semantic.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #map 
+        {
+            height: 700px;
+            width: 1460px;
+            margin: auto
+        }
+
+        html,body 
+        {
+            height: 1080px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container-fluid 
+        {
+            width: 1480px; 
+            margin: auto
+        }
+        .logo
+        {
+            width: 100px; 
+            height:100px;
+        }
+        #bg {background-image:url('../static/images/cook1.png');
+            background-size:cover}
+        #aboutimg {width: 880px; height: 450px;}
+    </style>
+</head>
+
+<body id='bg'>
+    <div class="text-center">
+        <img class="logo mt-4" src="../static/images/logo.png" class="rounded">
+    </div>
+    <div class="container-fluid mt-5 mb-4">
+    <div class="ui four item menu ui inverted teal large table ">
+        <a class="item" href="{% url 'homemap:index' %}"><h4><i class="fa fa-cog fa-spin fa-fw"></i> Home</h4></a>
+        <a class="item" href="{% url 'homemap:create' %}"><h4><i class="fa fa-telegram" aria-hidden="true"></i> Create Ur own </h4></a>
+        <a class="item" href="{% url 'homemap:foodcollection' %}"><h4><i class="fa fa-map-marker" aria-hidden="true"></i> Food Map</h4></a>
+        <a class="item" href="{% url 'homemap:about' %}"><h4><i class="fa fa-wpexplorer" aria-hidden="true"></i> About us </h4></a>
+    </div>
+    </div>
+    <div class="ui horizontal divider"><h4>{{title}}</h4></div>
+    </div>
+    {% block content %}
+    {% endblock %}
+    <script src="../static/scripts/jquery-3.2.1.min.js"></script>
+    <script src="../static/scripts/jquery.magnific-popup.js"></script>
+    
+    
+
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"crossorigin="anonymous"></script>
+    <script src="../static/scripts/semantic.min.js"></script>
+</body>
+
+</html>

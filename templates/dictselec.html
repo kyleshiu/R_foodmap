@@ -1,0 +1,80 @@
+<form class="container " method="GET">
+<select id="dictselec" name="select" class="container right p-1 text-center font-weight-light">
+<option value="請選擇">請選擇</option>
+<option value="中正區">中正區</option>
+<option value="大同區">大同區</option>
+<option value="中山區">中山區</option>
+<option value="松山區">松山區</option>
+<option value="大安區">大安區</option>
+<option value="萬華區">萬華區</option>
+<option value="信義區">信義區</option>
+<option value="士林區">士林區</option>
+<option value="北投區">北投區</option>
+<option value="內湖區">內湖區</option>
+<option value="南港區">南港區</option>
+<option value="文山區">文山區</option>
+</select>
+<input type="submit" id="submit">
+</form>
+
+
+<div class="container mt-3">
+<table id="table" class="table">
+<thead>
+    <tr class="row" id="trtbody">
+        <th class="col-1">#</th>
+        <th class="col-3">餐廳名稱</th>
+        <th class="col-1">類型</th>
+        <th class="col-3">地址</th>
+        <th class="col-2">電話</th>
+        <th class="col-2">網站</th>
+    </tr>
+</thead>
+
+<tbody>
+        {% for restaurant in restaurantslc %}
+        <tr class="row">
+            <td class="col-1">{{restaurant.0}}</td>
+            <td class="col-2">{{restaurant.1}}</td>
+            <td class="col-1">{{restaurant.2}}</td>
+            <td class="col-2">{{restaurant.3}}</td>
+            <td class="col-2">{{restaurant.4}}</td>
+            <td class="col-2" id="website"><a href="{{restaurant.5}}" id="websiteB">{{restaurant.5}}</a></td>
+        </tr>     
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<script src="../static/scripts/jquery-3.2.1.min.js"></script>
+<script>
+
+$('#submit').click(function() 
+{
+    $('#table').prop('selected',true)
+});
+
+
+// $('#dictselec').change(function() {
+//     var url='select'
+//             $.post(url,{'':''},function(datas){
+//                 var restaurant = JSON.parse(datas);
+//                 var tr = $("#trtbody")
+//                 var tr = $("#trthead")
+//                 $.each(restaurant,function(idx,restaurant){
+//                     var id =restaurant.fields.id
+//                     var restaurantname = restaurant.fields.restaurantname
+//                     var foodtype = restaurant.fields.foodtype
+//                     var address = restaurant.fields.address
+//                     var phone = restaurant.fields.phone
+//                     var website = restaurant.fields.website
+//                     var td = $("<td></td>").text('#' + '餐廳名稱' + '類型' + '地址' + '電話' + '網站')
+//                     var th = $("<th></th>").text(id + restaurantname + foodtype + address + phone + website)
+//                     tr.append(td)
+//                     tr.append(th)
+//                 })
+//                 $('#table').html(table)
+//             })
+//         })
+
+</script>
